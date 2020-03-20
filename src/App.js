@@ -9,7 +9,7 @@ class App extends Component{
   }
 
   componentDidMount(){
-    fetch(`http://127.0.0.1:3000/search/pizza`)
+    fetch(`http://localhost:3000/search/pizza`)
     .then(resp => resp.json())
     .then(data => this.setState({ data }))
   }
