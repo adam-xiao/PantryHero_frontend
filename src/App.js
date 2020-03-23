@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Search from './components/Search';
+import NavigBar from './components/NavigBar'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends Component {
 
@@ -22,7 +24,10 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Pantry Hero</h1>
-        <Search handleSearchBar={this.handleSearchBar} />
+
+        <NavigBar handleSearchBar={this.handleSearchBar}/>
+
+        {/* <Search handleSearchBar={this.handleSearchBar} /> */}
 
         {this.state.products.map(food => (
           <div key={food.food_name}>

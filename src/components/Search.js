@@ -13,7 +13,7 @@ function Search (props) {
 
 
     return (
-        <form on onSubmit={handleOnSubmit}>
+        <form onSubmit={handleOnSubmit}>
             Search: <input type="text" value={search} onChange={handleOnChange} /> 
             <button type="submit">Search Food</button>
 
