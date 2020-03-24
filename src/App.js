@@ -6,7 +6,7 @@ import Home from './containers/Home'
 import FoodCard from './components/FoodCard';
 import { NavLink } from 'react-router-dom';
 import { Route, Switch } from 'react-router-dom'
-import SignupForm from './components/SignupForm'
+import SignupForm from './components/SignUpForm'
 import LoginForm from './components/LoginForm'
 import Pantry from './containers/Pantry'
 
