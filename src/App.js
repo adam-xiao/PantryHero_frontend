@@ -24,8 +24,6 @@ class App extends Component {
 
 
   componentDidMount() {
-
-
         const token = localStorage.token
     
         if(token){
@@ -47,7 +45,6 @@ class App extends Component {
             }
           })
         }
-
   }
 
   handleSearchBar = (term) => {

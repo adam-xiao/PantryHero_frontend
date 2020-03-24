@@ -18,6 +18,7 @@ class Pantry extends Component {
     return (
         <div>        
             <h1>Pantry</h1>
+            <h2>Add new items</h2>
             {localStorage.token ? this.state.pantry.map(item => <FoodCard food={item} />) : <div>please sign in </div> }
         </div>
 
