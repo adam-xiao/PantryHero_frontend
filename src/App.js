@@ -4,9 +4,9 @@ import './App.css';
 import Search from './components/Search';
 import NavigBar from './components/NavigBar'
 import Home from './containers/Home'
-import 'bootstrap/dist/css/bootstrap.min.css';
 import FoodCard from './components/FoodCard';
 import { NavLink } from 'react-router-dom';
+
 
 class App extends Component {
 
@@ -60,17 +60,17 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Pantry Hero</h1>
-        <NavigBar handleSearchBar={this.handleSearchBar} />
+        <NavigBar />
         <Search handleSearchBar={this.handleSearchBar} />
         <Home />
-        {this.state.currentIng && <FoodCard food={this.state.currentIng} />}
+        {/* {this.state.currentIng && <FoodCard food={this.state.currentIng} />}
 
 
       <div>
         <h1>Pantry</h1>
         {this.state.pantry.map(item=> <FoodCard food={item} /> )}
       </div>
-
+ */}
 
       </div>
 

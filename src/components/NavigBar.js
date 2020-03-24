@@ -1,52 +1,54 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Col from 'react-bootstrap/Col'
 import Navbar from 'react-bootstrap/Navbar'
+import Nav from 'react-bootstrap/Nav'
+import Dropdown from 'react-bootstrap/Dropdown'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import FormControl from 'react-bootstrap/FormControl'
 import InputGroup from 'react-bootstrap/InputGroup'
 // import { render } from '@testing-library/react'
 
-function NavigBar (props){
-
-    const [search, setSearch] = useState("")
-
-
-    const handleOnChange = e => setSearch(e.target.value)
-
-    const handleOnSubmit = e => {
-        e.preventDefault()
-        props.handleSearchBar(search)
+export default class NavigBar extends React.Component{
+    
+    render(){
+        return(
+            // <Navbar className="bg-light justify-content-between">
+            //     <Col xs lg="2"></Col>
+            //     <Form inline>
+            //         <InputGroup>
+            //                 <FormControl
+            //                 placeholder="Username"
+            //                 aria-label="Username"
+            //                 aria-describedby="basic-addon1"
+            //                 />
+            //                 <FormControl
+            //                 placeholder="Password"
+            //                 aria-label="Password"
+            //                 aria-describedby="basic-addon1"
+            //                 />
+            //         </InputGroup>
+            //         <pre> </pre>
+            //         <Button type="submit">Login</Button>
+            //         <pre> </pre>
+            //         <Button type="submit">Sign out</Button>
+            //     </Form>
+            // </Navbar>
+    
+            <Navbar className="bg-light justify-content-between">
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Collapse id="basic-navbar-nav">
+                    <Nav className="mr-auto">
+                        <Nav.Link href="#home">Home</Nav.Link>
+                        <Nav.Link href="#link">Pantry</Nav.Link>
+                        {/* <Nav.Dropdown title="Recipe" id="basic-nav-dropdown">
+                            <Dropdown.Item href="#action/3.1">Fav Recipes</Dropdown.Item>
+                            <Dropdown.Divider />
+                            <Dropdown.Item href="#action/3.2">Recipe Selector</Dropdown.Item>
+                        </Nav.Dropdown> */}
+                    </Nav>
+                </Navbar.Collapse>
+            </Navbar>
+        )
     }
-
-    return(
-        <Navbar className="bg-light justify-content-between">
-            
-            <Form xs lg="2" inline onSubmit={handleOnSubmit}>
-                <FormControl value={search} onChange={handleOnChange} type="text" placeholder="Search" className=" mr-sm-2" />
-                <Button type="submit">Submit</Button>
-            </Form>
-            
-            <Form inline>
-                <InputGroup>
-                        <FormControl
-                        placeholder="Username"
-                        aria-label="Username"
-                        aria-describedby="basic-addon1"
-                        />
-                        <FormControl
-                        placeholder="Password"
-                        aria-label="Password"
-                        aria-describedby="basic-addon1"
-                        />
-                </InputGroup>
-                <pre> </pre>
-                <Button type="submit">Login</Button>
-                <pre> </pre>
-                <Button type="submit">Sign out</Button>
-            </Form>
-        </Navbar>
-    )
 }
-
-export default NavigBar

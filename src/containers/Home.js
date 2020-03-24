@@ -1,7 +1,9 @@
-import React, { Component, useState } from 'react';
+import React, { Component } from 'react';
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import Container from 'react-bootstrap/Container'
+import Carousel from 'react-bootstrap/Carousel'
+import RecipeCarousel from '../components/RecipeCarousel'
 
 
 
@@ -9,12 +11,14 @@ class Home extends Component{
 
     render(){
         return(
-            <Container fluid>
-                <Row variant="light">
+            <Container>
+                <Row>
                     <Col>1 of 2</Col>
                 </Row>
                 <Row>
-                    <Col>2 of 2</Col>
+                <Col>
+                    <RecipeCarousel />
+                </Col>
                 </Row>
             </Container>
         )
