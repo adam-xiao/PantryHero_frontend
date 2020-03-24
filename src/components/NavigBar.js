@@ -32,7 +32,7 @@ export default class NavigBar extends React.Component{
             //         <Button type="submit">Login</Button>
             //         <pre> </pre>
             //         <Button type="submit">Sign out</Button>
-            // {localStorage.token ? <div>Hello, {props.username}<Button type="submit" onClick={props.logout}>Sign out</Button></div>: <div>Please Sign in</div>}
+
             //     </Form>
             // </Navbar>
     
@@ -42,6 +42,7 @@ export default class NavigBar extends React.Component{
                     <Nav className="mr-auto">
                         <Nav.Link href="#home">Home</Nav.Link>
                         <Nav.Link href="#link">Pantry</Nav.Link>
+                        {localStorage.token ? <div>Hello, {this.props.username}<Button type="submit" onClick={this.props.logout}>Sign out</Button></div>: <div>Please Sign in</div>}
                         {/* <Nav.Dropdown title="Recipe" id="basic-nav-dropdown">
                             <Dropdown.Item href="#action/3.1">Fav Recipes</Dropdown.Item>
                             <Dropdown.Divider />
