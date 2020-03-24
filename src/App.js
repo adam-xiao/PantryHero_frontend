@@ -6,7 +6,7 @@ import Home from './containers/Home'
 import FoodCard from './components/FoodCard';
 import { NavLink } from 'react-router-dom';
 import { Route, Switch } from 'react-router-dom'
-import SignupForm from './components/SignUpForm'
+import SignupForm from './components/SignupForm'
 import LoginForm from './components/LoginForm'
 import Pantry from './containers/Pantry'
 
@@ -109,11 +109,8 @@ class App extends Component {
         <Switch>
           <Route path="/login" render={() => <LoginForm setUser={this.setUser} />} />
           <Route path="/signup" render={() => <SignupForm setUser={this.setUser} />} />
-          <Route path="/pantry"  render={() => <Pantry />} />
+          <Route path="/pantry"  render={() => <Pantry handleSearchBar={this.handleSearchBar} currentIng={this.state.currentIng} user_id={this.state.currentUser.id}/>} />
         </Switch>
-
-
-        {this.state.currentIng && <FoodCard food={this.state.currentIng} id={this.state.currentUser.id}/>}
 
 
       </div>
