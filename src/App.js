@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import './App.css';
 import Search from './components/Search';
 import NavigBar from './components/NavigBar'
-import 'bootstrap/dist/css/bootstrap.min.css';
+import Home from './containers/Home'
 import FoodCard from './components/FoodCard';
 import { NavLink } from 'react-router-dom';
 import { Route, Switch } from 'react-router-dom'
 import SignupForm from './components/SignupForm'
 import LoginForm from './components/LoginForm'
 import Pantry from './containers/Pantry'
+
 
 class App extends Component {
 
