@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import Search from './components/Search';
 import NavigBar from './components/NavigBar'
+import Home from './containers/Home'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import FoodCard from './components/FoodCard';
 import { NavLink } from 'react-router-dom';
@@ -54,6 +55,7 @@ class App extends Component {
         <h1>Pantry Hero</h1>
         <NavigBar handleSearchBar={this.handleSearchBar} />
         <Search handleSearchBar={this.handleSearchBar} />
+        <Home />
         {this.state.currentIng && <FoodCard food={this.state.currentIng} />}
       </div>
     );
