@@ -13,7 +13,14 @@ class App extends Component {
   state = {
     data: [],
     Search: "",
-    currentIng: ""
+    currentIng: "",
+    pantry: []
+  }
+
+  componentDidMount() {
+    fetch(`http://127.0.0.1:3000/user`)
+      .then(resp => resp.json())
+      .then(data => this.setState({ pantry: data }))
   }
 
   handleSearchBar = (term) => {
@@ -46,7 +53,7 @@ class App extends Component {
   }
 
 
-  
+
 
   render() {
 
@@ -57,7 +64,17 @@ class App extends Component {
         <Search handleSearchBar={this.handleSearchBar} />
         <Home />
         {this.state.currentIng && <FoodCard food={this.state.currentIng} />}
+
+
+      <div>
+        <h1>Pantry</h1>
+        {this.state.pantry.map(item=> <FoodCard food={item} /> )}
       </div>
+
+
+      </div>
+
+
     );
   }
 }

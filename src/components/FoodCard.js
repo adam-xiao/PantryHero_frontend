@@ -10,7 +10,9 @@ function FoodCard(props) {
         fetch(`http://127.0.0.1:3000/ingredient/create`,
         {
           method: 'post',
-          body: JSON.stringify(props.food)
+          headers: {
+            'Content-Type': 'application/json'},
+          body: JSON.stringify({...props.food, user_id: 1, quantity: 1})
         }
         )
       }
