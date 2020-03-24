@@ -8,12 +8,13 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 
 
+
 ReactDOM.render(
-    (<Router>
+    <Router>
         <div>
-            <Route exact path="/" component={App} />
+            <Route path="/" component={App} />
         </div>
-    </Router>),
+    </Router>,
 document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
