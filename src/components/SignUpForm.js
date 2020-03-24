@@ -18,7 +18,7 @@ class SignupForm extends React.Component {
     e.preventDefault()
 
     if (this.state.password === this.state.passwordConfirmation){
-      fetch("http://localhost:3001/signup", {
+      fetch("http://localhost:3000/user", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -31,7 +31,8 @@ class SignupForm extends React.Component {
         if(response.errors){
           alert(response.errors)
         } else {
-
+          // send them somewhere
+          // storing the user object SOMEWHERE
           this.props.setUser(response)
         }
       })
