@@ -17,7 +17,7 @@ class App extends Component {
     Search: "",
     currentIng: "",
     pantry: [],
-    currentUser: {username:""}
+    currentUser: {username:"", id: null}
   }
 
 
@@ -68,7 +68,7 @@ class App extends Component {
   logout = (e) => {
     e.preventDefault()
     this.setState({
-      currentUser: null
+      currentUser: {username:"", id: null}
     }, () => {
       localStorage.removeItem("token")
       this.props.history.push("/login")
@@ -107,7 +107,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Pantry Hero</h1>
-        <NavigBar handleSearchBar={this.handleSearchBar} logout={this.logout} />
+        <NavigBar handleSearchBar={this.handleSearchBar} logout={this.logout} username={this.state.currentUser.username}/>
         <Switch>
           <Route path="/login" render={() => <LoginForm setUser={this.setUser} />} />
           <Route path="/signup" render={() => <SignupForm setUser={this.setUser} />} />
@@ -115,7 +115,7 @@ class App extends Component {
         </Switch>
 
 
-        {this.state.currentIng && <FoodCard food={this.state.currentIng} />}
+        {this.state.currentIng && <FoodCard food={this.state.currentIng} id={this.state.currentUser.id}/>}
 
 
       </div>

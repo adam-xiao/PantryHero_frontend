@@ -12,7 +12,7 @@ function FoodCard(props) {
           method: 'post',
           headers: {
             'Content-Type': 'application/json'},
-          body: JSON.stringify({...props.food, user_id: 1, quantity: 1})
+          body: JSON.stringify({...props.food, user_id: props.id, quantity: 1})
         }
         )
       }

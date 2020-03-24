@@ -43,7 +43,7 @@ function NavigBar (props){
                 <pre> </pre>
                 <Button type="submit">Login</Button>
                 <pre> </pre>
-                {localStorage.token ? <Button type="submit" onClick={props.logout}>Sign out</Button>: <div>Please Sign in</div>}
+                {localStorage.token ? <div>Hello, {props.username}<Button type="submit" onClick={props.logout}>Sign out</Button></div>: <div>Please Sign in</div>}
             </Form>
         </Navbar>
     )

@@ -8,7 +8,9 @@ class Pantry extends Component {
     }
 
     componentDidMount(){
-        fetch(`http://127.0.0.1:3000/user`)
+        fetch(`http://127.0.0.1:3000/user`, {headers: {
+            "Authorization": localStorage.token   
+        }} )
         .then(resp => resp.json())
         .then(data => this.setState({pantry: data}))
     }
@@ -16,7 +18,7 @@ class Pantry extends Component {
     return (
         <div>        
             <h1>Pantry</h1>
-            {this.state.pantry.map(item => <FoodCard food={item} />)}
+            {localStorage.token ? this.state.pantry.map(item => <FoodCard food={item} />) : <div>please sign in </div> }
         </div>
 
     )
