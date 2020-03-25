@@ -1,26 +1,31 @@
-import React from 'react';
+import React, {forceUpdate} from 'react';
 import '../All.css';
 
 
 function FoodCard(props) {
 
-    // const handleAdd = () => {
-    //     fetch(`http://127.0.0.1:3000/ingredient/create`,
-    //     {
-    //       method: 'post',
-    //       headers: {
-    //         'Content-Type': 'application/json'},
-    //       body: JSON.stringify({...props.food, user_id: props.user_id, quantity: 1})
-    //     }
-    //     )
-    //   }
+    const handleUpdate = (e) => {
+      e.preventDefault()
+        fetch(`http://127.0.0.1:3000/ingredients/${e.target.firstElementChild.dataset.id}`,
+        {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json'},
+          body: JSON.stringify({quantity: e.target.firstElementChild.value})
+        }
+        )
+      }
+
+
 
     const { id,
+      nf_card,
         food_name,
         nf_calories,
         nf_cholesterol,
         nf_dietary_fiber,
         nf_p,
+        quantity,
         nf_potassium,
         nf_protein,
         nf_saturated_fat,
@@ -28,13 +33,19 @@ function FoodCard(props) {
         nf_sugars,
         nf_total_carbohydrate,
         nf_total_fat,
-        img_url} = props.food
+        img_url,} = props.food
 
     return (
       <tr key={id}>
         <td className="tableText">
           <img src={img_url} className="foodImage"/>
           <h5>{food_name}</h5>
+          <form onSubmit={handleUpdate}>
+            Qty: <input type="text" size="4" data-id={id} placeholder={quantity}></input>
+            <button>Update</button><br></br>
+            <br></br>
+          </form>
+            <button onClick={()=>props.handleDelete(id)}>Remove</button>
         </td>
         <td className="tableText">
             <p>Calories: {nf_calories}</p>

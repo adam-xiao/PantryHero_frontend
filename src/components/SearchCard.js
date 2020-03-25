@@ -16,6 +16,7 @@ function SearchCard(props) {
       }
 
     const { id,
+        nf_id,
         food_name,
         nf_calories,
         nf_cholesterol,

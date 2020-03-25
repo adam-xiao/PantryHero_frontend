@@ -1,6 +1,6 @@
 import React from 'react'
 
-class SignupForm extends React.Component {
+class SignUpForm extends React.Component {
 
   state = {
     username: "",
@@ -51,7 +51,7 @@ class SignupForm extends React.Component {
           <input name="password" value={this.state.password} type="password"  onChange={this.handleChange}placeholder="password"/>
           <input name="passwordConfirmation" value={this.state.passwordConfirmation} type="password"  onChange={this.handleChange}placeholder="password confirmation"/>
           <button className="login" type="submit">Sign Up</button>
-          <div onClick={()=> this.props.history.push("/login")}>No Account? Sign up</div>
+          <div onClick={()=> this.props.history.push("/login")}>Already have an Account, Log in</div>
         </form>
       </div>
     )
@@ -60,4 +60,4 @@ class SignupForm extends React.Component {
 
 }
 
-export default SignupForm
+export default SignUpForm

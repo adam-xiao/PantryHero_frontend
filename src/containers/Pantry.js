@@ -22,6 +22,13 @@ class Pantry extends Component {
             .then(resp => resp.json())
             .then(data => this.setState({ pantry: data }))
     }
+
+    handleDelete = (id) => {
+        fetch(`http://127.0.0.1:3000/ingredients/${id}`,
+        { method: 'DELETE'}
+        ).then(this.setState({pantry: this.state.pantry.filter(item=>item.id !== id)}))
+      }
+
     render() {
         return (
             <div>
@@ -38,7 +45,7 @@ class Pantry extends Component {
                                 <Col sm={8}>
                                     <Table striped bordered hover>
                                         <tbody>
-                                            {this.state.pantry.map(item => <FoodCard food={item}  key={item.id}/>)}
+                                            {this.state.pantry.map(item => <FoodCard food={item}  key={item.id} handleDelete={this.handleDelete}/>)}
                                         </tbody>
                                     </Table>
                                 </Col>

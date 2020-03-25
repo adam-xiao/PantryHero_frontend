@@ -6,7 +6,7 @@ import Home from './containers/Home'
 import FoodCard from './components/FoodCard';
 import { NavLink } from 'react-router-dom';
 import { Route, Switch } from 'react-router-dom'
-import SignupForm from './components/SignUpForm'
+import SignUpForm from './components/SignUpForm'
 import LoginForm from './components/LoginForm'
 import Pantry from './containers/Pantry'
 import Title from './containers/Title'
@@ -71,7 +71,7 @@ class App extends Component {
       currentUser: { username: "", id: null }
     }, () => {
       localStorage.removeItem("token")
-      this.props.history.push("/login")
+      this.props.history.push("/")
     })
   }
 
@@ -80,7 +80,7 @@ class App extends Component {
   parseData = (arr) => {
     this.setState({
       currentIng: {
-        id: arr[0].ndb_no,
+        nf_id: arr[0].ndb_no,
         food_name: arr[0].food_name,
         nf_calories: arr[0].nf_calories,
         nf_cholesterol: arr[0].nf_cholesterol,
@@ -112,7 +112,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Title} />
             <Route path="/login" render={() => <LoginForm setUser={this.setUser} history={this.props.history}/>} />
-            <Route path="/signup" render={() => <SignupForm setUser={this.setUser} history={this.props.history}/>} />
+            <Route path="/signup" render={() => <SignUpForm setUser={this.setUser} history={this.props.history}/>} />
             <Route path="/pantry" render={() => <Pantry handleSearchBar={this.handleSearchBar} currentIng={this.state.currentIng} user_id={this.state.currentUser.id} />} />
           </Switch>
         </div>
