@@ -37,24 +37,29 @@ export default class NavigBar extends React.Component{
             // </Navbar>
     
             <Navbar className="bg-light justify-content-between">
+                <Col sm={9}></Col>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
                         <Nav.Link href="/home">Home</Nav.Link>
                         <Nav.Link href="/pantry">Pantry</Nav.Link>
-                        {localStorage.token ? 
-                            <div>Hello, {this.props.username}<Button type="submit" onClick={this.props.logout}>Sign out</Button></div>
-                            :  
-                            <div> 
-                                <Nav.Link href="/login">Login</Nav.Link>
-                                <Nav.Link href="/Signup">Sign Up</Nav.Link>
-                             </div> }
-                             
+                        
                         {/* <Nav.Dropdown title="Recipe" id="basic-nav-dropdown">
                             <Dropdown.Item href="#action/3.1">Fav Recipes</Dropdown.Item>
                             <Dropdown.Divider />
                             <Dropdown.Item href="#action/3.2">Recipe Selector</Dropdown.Item>
                         </Nav.Dropdown> */}
+
+                        {localStorage.token ? 
+                            <Navbar.Text>Hello, {this.props.username}<Button type="submit" onClick={this.props.logout}>Sign out</Button></Navbar.Text>
+                            :  
+                            <>
+                                <Nav.Link href="/login">Login</Nav.Link>
+                                <Nav.Link href="/Signup">Sign Up</Nav.Link>
+                            </>
+                             }
+                             
+                        
 
                     </Nav>
                 </Navbar.Collapse>

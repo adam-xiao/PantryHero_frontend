@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import FoodCard from '../components/FoodCard';
+import SearchCard from '../components/SearchCard';
 import Search from '../components/Search';
+import Col from 'react-bootstrap/Col'
+import Row from 'react-bootstrap/Row'
+import Container from 'react-bootstrap/Container'
+import Table from 'react-bootstrap/Table'
 
 class Pantry extends Component {
 
@@ -27,8 +32,22 @@ class Pantry extends Component {
                     <div>
                         <h2>Add new items</h2>
                         <Search handleSearchBar={this.props.handleSearchBar} />
-                        {this.props.currentIng && <FoodCard food={this.props.currentIng} user_id={this.props.user_id}/>}
-                        {this.state.pantry.map(item => <FoodCard food={item}  key={item.id}/>)}
+                        <br></br>
+                        <Container fluid>
+                            <Row>
+                                <Col sm={8}>
+                                    <Table striped bordered hover>
+                                        <tbody>
+                                            {this.state.pantry.map(item => <FoodCard food={item}  key={item.id}/>)}
+                                        </tbody>
+                                    </Table>
+                                </Col>
+                                <Col sm={4}>
+                                    {this.props.currentIng && <SearchCard food={this.props.currentIng} user_id={this.props.user_id}/>}
+                                </Col>
+                            </Row>
+                        </Container>
+                        
                     </div>
 
                     : <div>please sign in </div>}
