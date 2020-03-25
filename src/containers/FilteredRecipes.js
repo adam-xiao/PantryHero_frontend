@@ -13,14 +13,6 @@ export default class FilteredRecipes extends Component{
         filteredRecipes: []
     }
 
-    filterRecipes=()=>{
-        let ingNames = this.state.pantry.map(item => item.food_name).join(",")
-        
-        fetch(`http://127.0.0.1:3000/recipe/search/${ingNames}`)
-          .then(resp => resp.json())
-          .then(data => this.setState( {filteredRecipes: data}))
-          
-    }
 
 
     componentDidMount() {
@@ -31,6 +23,13 @@ export default class FilteredRecipes extends Component{
         })
             .then(resp => resp.json())
             .then(data => this.setState({ pantry: data }))
+
+
+            let ingNames = this.state.pantry.map(item => item.food_name).join(",")
+        
+            fetch(`http://127.0.0.1:3000/recipe/search/${ingNames}`)
+              .then(resp => resp.json())
+              .then(data => this.setState( {filteredRecipes: data}))
     }
    
     

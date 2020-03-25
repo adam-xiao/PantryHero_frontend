@@ -49,6 +49,15 @@ class App extends Component {
             })
           }
         })
+
+        //load pantry data by user
+          fetch(`http://127.0.0.1:3000/user`, {
+              headers: {
+                  "Authorization": localStorage.token
+              }
+          })
+              .then(resp => resp.json())
+              .then(data => this.setState({ pantry: data }))
     }
   }
 
@@ -101,6 +110,12 @@ class App extends Component {
     })
   }
 
+  handleDelete = (id) => {
+    fetch(`http://127.0.0.1:3000/ingredients/${id}`,
+    { method: 'DELETE'}
+    ).then(this.setState({pantry: this.state.pantry.filter(item=>item.id !== id)}))
+  }
+
 
 
 
@@ -118,7 +133,7 @@ class App extends Component {
             <Route exact path="/" component={Title} />
             <Route path="/login" render={() => <LoginForm setUser={this.setUser} history={this.props.history}/>} />
             <Route path="/signup" render={() => <SignUpForm setUser={this.setUser} history={this.props.history}/>} />
-            <Route path="/pantry" render={() => <Pantry handleSearchBar={this.handleSearchBar} currentIng={this.state.currentIng} user_id={this.state.currentUser.id} />} />
+            <Route path="/pantry" render={() => <Pantry handleSearchBar={this.handleSearchBar} currentIng={this.state.currentIng} user_id={this.state.currentUser.id} pantry={this.state.pantry} handleDelete={this.handleDelete}/>} />
             <Route path="/home" component={Home} />
             <Route path="/favrecipes" render={() => <FavRecipes />} />
             <Route path="/filteredrecipes" render={() => <FilteredRecipes />} />

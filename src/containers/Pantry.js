@@ -13,21 +13,21 @@ class Pantry extends Component {
         pantry: []
     }
 
-    componentDidMount() {
-        fetch(`http://127.0.0.1:3000/user`, {
-            headers: {
-                "Authorization": localStorage.token
-            }
-        })
-            .then(resp => resp.json())
-            .then(data => this.setState({ pantry: data }))
-    }
+    // componentDidMount() {
+    //     fetch(`http://127.0.0.1:3000/user`, {
+    //         headers: {
+    //             "Authorization": localStorage.token
+    //         }
+    //     })
+    //         .then(resp => resp.json())
+    //         .then(data => this.setState({ pantry: data }))
+    // }
 
-    handleDelete = (id) => {
-        fetch(`http://127.0.0.1:3000/ingredients/${id}`,
-        { method: 'DELETE'}
-        ).then(this.setState({pantry: this.state.pantry.filter(item=>item.id !== id)}))
-      }
+    // handleDelete = (id) => {
+    //     fetch(`http://127.0.0.1:3000/ingredients/${id}`,
+    //     { method: 'DELETE'}
+    //     ).then(this.setState({pantry: this.state.pantry.filter(item=>item.id !== id)}))
+    //   }
 
     render() {
         return (
@@ -45,7 +45,7 @@ class Pantry extends Component {
                                 <Col sm={8}>
                                     <Table striped bordered hover>
                                         <tbody>
-                                            {this.state.pantry.map(item => <FoodCard food={item}  key={item.id} handleDelete={this.handleDelete}/>)}
+                                            {this.props.pantry.map(item => <FoodCard food={item}  key={item.id} handleDelete={this.props.handleDelete}/>)}
                                         </tbody>
                                     </Table>
                                 </Col>
