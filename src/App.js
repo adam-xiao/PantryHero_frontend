@@ -9,6 +9,8 @@ import { Route, Switch } from 'react-router-dom'
 import SignupForm from './components/SignUpForm'
 import LoginForm from './components/LoginForm'
 import Pantry from './containers/Pantry'
+import Title from './containers/Title'
+
 
 
 class App extends Component {
@@ -18,33 +20,33 @@ class App extends Component {
     Search: "",
     currentIng: "",
     pantry: [],
-    currentUser: {username:"", id: null}
+    currentUser: { username: "", id: null }
   }
 
 
 
   componentDidMount() {
-        const token = localStorage.token
-    
-        if(token){
-          //get user info
-    
-          fetch("http://localhost:3000/auto_login", {
-            headers: {
-              "Authorization": token
-            }
-          })
-          .then(res => res.json())
-          .then(response => {
-            if (response.errors){
-              alert(response.errors)
-            } else {
-              this.setState({
-                currentUser: response
-              })
-            }
-          })
+    const token = localStorage.token
+
+    if (token) {
+      //get user info
+
+      fetch("http://localhost:3000/auto_login", {
+        headers: {
+          "Authorization": token
         }
+      })
+        .then(res => res.json())
+        .then(response => {
+          if (response.errors) {
+            alert(response.errors)
+          } else {
+            this.setState({
+              currentUser: response
+            })
+          }
+        })
+    }
   }
 
   handleSearchBar = (term) => {
@@ -66,7 +68,7 @@ class App extends Component {
   logout = (e) => {
     e.preventDefault()
     this.setState({
-      currentUser: {username:"", id: null}
+      currentUser: { username: "", id: null }
     }, () => {
       localStorage.removeItem("token")
       this.props.history.push("/login")
@@ -105,13 +107,15 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Pantry Hero</h1>
-        <NavigBar handleSearchBar={this.handleSearchBar} logout={this.logout} username={this.state.currentUser.username}/>
-        <Switch>
-          <Route path="/login" render={() => <LoginForm setUser={this.setUser} />} />
-          <Route path="/signup" render={() => <SignupForm setUser={this.setUser} />} />
-          <Route path="/pantry"  render={() => <Pantry handleSearchBar={this.handleSearchBar} currentIng={this.state.currentIng} user_id={this.state.currentUser.id}/>} />
-        </Switch>
-
+        <NavigBar handleSearchBar={this.handleSearchBar} logout={this.logout} username={this.state.currentUser.username} />
+        <div className="mainBody">
+          <Switch>
+            <Route exact path="/" component={Title} />
+            <Route path="/login" render={() => <LoginForm setUser={this.setUser} history={this.props.history}/>} />
+            <Route path="/signup" render={() => <SignupForm setUser={this.setUser} history={this.props.history}/>} />
+            <Route path="/pantry" render={() => <Pantry handleSearchBar={this.handleSearchBar} currentIng={this.state.currentIng} user_id={this.state.currentUser.id} />} />
+          </Switch>
+        </div>
 
       </div>
 

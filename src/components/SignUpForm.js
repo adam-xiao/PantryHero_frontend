@@ -45,16 +45,19 @@ class SignupForm extends React.Component {
   render(){
     return (
       <div className="center-form">
+          New Account:
         <form className="auth-form" onSubmit={this.handleSubmit}>
           <input name="username" value={this.state.username} onChange={this.handleChange}placeholder="username"/>
           <input name="password" value={this.state.password} type="password"  onChange={this.handleChange}placeholder="password"/>
           <input name="passwordConfirmation" value={this.state.passwordConfirmation} type="password"  onChange={this.handleChange}placeholder="password confirmation"/>
           <button className="login" type="submit">Sign Up</button>
+          <div onClick={()=> this.props.history.push("/login")}>No Account? Sign up</div>
         </form>
       </div>
     )
   }
-  
+
+
 }
 
 export default SignupForm
