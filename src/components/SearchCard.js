@@ -1,8 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Jumbotron from 'react-bootstrap/Jumbotron'
 
 
 function SearchCard(props) {
+
+    const [qty, setQty] = useState(1)
 
     const handleAdd = () => {
         fetch(`http://127.0.0.1:3000/ingredient/create`,
@@ -10,7 +12,7 @@ function SearchCard(props) {
           method: 'post',
           headers: {
             'Content-Type': 'application/json'},
-          body: JSON.stringify({...props.food, user_id: props.user_id, quantity: 1})
+          body: JSON.stringify({...props.food, user_id: props.user_id, quantity: qty})
         }
         )
       }
@@ -48,8 +50,11 @@ function SearchCard(props) {
             <div> Carbohydrates: {nf_total_carbohydrate} </div>
             <div> Total Fat: {nf_total_fat} </div>
 
+            <form onSubmit={handleAdd}>
+            Qty: <input type="number" style={{width:"50px"}} data-id={id} min="1" required="required" value={qty} onChange={(e)=>setQty(e.target.value)}></input>
+            <button>Add to Pantry</button>
+          </form>
 
-            <button onClick={handleAdd}>Add to Pantry</button>
         </Jumbotron>
     )
 }

@@ -41,7 +41,7 @@ function FoodCard(props) {
           <img src={img_url} className="foodImage"/>
           <h5>{food_name}</h5>
           <form onSubmit={handleUpdate}>
-            Qty: <input type="text" size="4" data-id={id} placeholder={quantity}></input>
+            Qty: <input type="number" style={{width:"50px"}} data-id={id} min="1" required="required" placeholder={quantity}></input>
             <button>Update</button><br></br>
             <br></br>
           </form>
