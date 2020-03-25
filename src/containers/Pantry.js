@@ -53,6 +53,7 @@ class Pantry extends Component {
                                     {this.props.currentIng && <SearchCard food={this.props.currentIng} user_id={this.props.user_id}/>}
                                 </Col>
                             </Row>
+                        
                         </Container>
                         
                     </div>

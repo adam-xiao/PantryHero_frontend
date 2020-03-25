@@ -32,8 +32,8 @@ class App extends Component {
     const token = localStorage.token
 
     if (token) {
-      //get user info
 
+      //get user info if token is present 
       fetch("http://localhost:3000/auto_login", {
         headers: {
           "Authorization": token
@@ -109,7 +109,9 @@ class App extends Component {
 
     return (
       <div className="App">
-        <h1 className="tableText">Pantry Hero</h1>
+        
+        
+        <h1 className="tableText" onClick={()=> this.props.history.push("/")}>Pantry Hero</h1>
         <NavigBar handleSearchBar={this.handleSearchBar} logout={this.logout} username={this.state.currentUser.username} />
         <div className="mainBody">
           <Switch>
@@ -117,6 +119,7 @@ class App extends Component {
             <Route path="/login" render={() => <LoginForm setUser={this.setUser} history={this.props.history}/>} />
             <Route path="/signup" render={() => <SignUpForm setUser={this.setUser} history={this.props.history}/>} />
             <Route path="/pantry" render={() => <Pantry handleSearchBar={this.handleSearchBar} currentIng={this.state.currentIng} user_id={this.state.currentUser.id} />} />
+            <Route path="/home" component={Home} />
             <Route path="/favrecipes" render={() => <FavRecipes />} />
             <Route path="/filteredrecipes" render={() => <FilteredRecipes />} />
           </Switch>

@@ -11,16 +11,18 @@ class Home extends Component{
 
     render(){
         return(
-            <Container>
-                <Row>
-                    <Col>1 of 2</Col>
-                </Row>
-                <Row>
-                <Col>
-                    <RecipeCarousel />
-                </Col>
-                </Row>
-            </Container>
+
+            <img src="https://media.istockphoto.com/photos/small-pantry-picture-id458850773"></img>
+            // <Container>
+            //     <Row>
+            //         <Col>1 of 2</Col>
+            //     </Row>
+            //     <Row>
+            //     <Col>
+            //         <RecipeCarousel />
+            //     </Col>
+            //     </Row>
+            // </Container>
         )
     }
 }
