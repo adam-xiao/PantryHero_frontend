@@ -6,10 +6,13 @@ import Home from './containers/Home'
 import FoodCard from './components/FoodCard';
 import { NavLink } from 'react-router-dom';
 import { Route, Switch } from 'react-router-dom'
-import SignupForm from './components/SignUpForm'
+import SignUpForm from './components/SignUpForm'
 import LoginForm from './components/LoginForm'
 import Pantry from './containers/Pantry'
 import Title from './containers/Title'
+import FavRecipes from './containers/FavRecipes'
+import FilteredRecipes from './containers/FilteredRecipes'
+
 
 
 
@@ -106,14 +109,16 @@ class App extends Component {
 
     return (
       <div className="App">
-        <h1>Pantry Hero</h1>
+        <h1 className="tableText">Pantry Hero</h1>
         <NavigBar handleSearchBar={this.handleSearchBar} logout={this.logout} username={this.state.currentUser.username} />
         <div className="mainBody">
           <Switch>
             <Route exact path="/" component={Title} />
             <Route path="/login" render={() => <LoginForm setUser={this.setUser} history={this.props.history}/>} />
-            <Route path="/signup" render={() => <SignupForm setUser={this.setUser} history={this.props.history}/>} />
+            <Route path="/signup" render={() => <SignUpForm setUser={this.setUser} history={this.props.history}/>} />
             <Route path="/pantry" render={() => <Pantry handleSearchBar={this.handleSearchBar} currentIng={this.state.currentIng} user_id={this.state.currentUser.id} />} />
+            <Route path="/favrecipes" render={() => <FavRecipes />} />
+            <Route path="/filteredrecipes" render={() => <FilteredRecipes />} />
           </Switch>
         </div>
 

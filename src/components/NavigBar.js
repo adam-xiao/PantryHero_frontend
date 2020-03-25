@@ -4,6 +4,7 @@ import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import Dropdown from 'react-bootstrap/Dropdown'
 import Button from 'react-bootstrap/Button'
+import DropdownButton from 'react-bootstrap/DropdownButton'
 import Form from 'react-bootstrap/Form'
 import FormControl from 'react-bootstrap/FormControl'
 import InputGroup from 'react-bootstrap/InputGroup'
@@ -37,21 +38,23 @@ export default class NavigBar extends React.Component{
             // </Navbar>
     
             <Navbar className="bg-light justify-content-between">
-                <Col sm={9}></Col>
+                <Col xs={8}></Col>
+                <Col ></Col>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
                         <Nav.Link href="/home">Home</Nav.Link>
                         <Nav.Link href="/pantry">Pantry</Nav.Link>
+                        <DropdownButton id="dropdown-basic-button" title="Recipes" variant="light">
+                            <Dropdown.Item href="/favrecipes">Favorite Recipes</Dropdown.Item>
+                            <Dropdown.Item href="/filteredrecipes">Recipe Finder</Dropdown.Item>
+                        </DropdownButton>
                         
-                        {/* <Nav.Dropdown title="Recipe" id="basic-nav-dropdown">
-                            <Dropdown.Item href="#action/3.1">Fav Recipes</Dropdown.Item>
-                            <Dropdown.Divider />
-                            <Dropdown.Item href="#action/3.2">Recipe Selector</Dropdown.Item>
-                        </Nav.Dropdown> */}
 
                         {localStorage.token ? 
-                            <Navbar.Text>Hello, {this.props.username}<Button type="submit" onClick={this.props.logout}>Sign out</Button></Navbar.Text>
+                            <>
+                            <Navbar.Text>Hello, {this.props.username}</Navbar.Text><pre> </pre><Button type="submit" onClick={this.props.logout}>Sign out</Button>
+                            </>
                             :  
                             <>
                                 <Nav.Link href="/login">Login</Nav.Link>
