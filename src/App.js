@@ -23,7 +23,8 @@ class App extends Component {
     Search: "",
     currentIng: "",
     pantry: [],
-    currentUser: { username: "", id: null }
+    currentUser: { username: "", id: null },
+    filteredRecipes: null
   }
 
 
@@ -50,14 +51,21 @@ class App extends Component {
           }
         })
 
-        //load pantry data by user
-          fetch(`http://127.0.0.1:3000/user`, {
-              headers: {
-                  "Authorization": localStorage.token
-              }
-          })
-              .then(resp => resp.json())
-              .then(data => this.setState({ pantry: data }))
+      //load pantry data by user
+      fetch(`http://127.0.0.1:3000/user`, {
+        headers: {
+          "Authorization": localStorage.token
+        }
+      })
+        .then(resp => resp.json())
+        .then(data => {
+          this.setState({ pantry: data })
+          fetch(`http://127.0.0.1:3000/recipe/search/${data.map(item => item.food_name).join(",")}`)
+          .then(resp => resp.json())
+          .then(data => this.setState({ filteredRecipes: data }))
+        }
+        )
+
     }
   }
 
@@ -112,8 +120,8 @@ class App extends Component {
 
   handleDelete = (id) => {
     fetch(`http://127.0.0.1:3000/ingredients/${id}`,
-    { method: 'DELETE'}
-    ).then(this.setState({pantry: this.state.pantry.filter(item=>item.id !== id)}))
+      { method: 'DELETE' }
+    ).then(this.setState({ pantry: this.state.pantry.filter(item => item.id !== id) }))
   }
 
 
@@ -124,19 +132,19 @@ class App extends Component {
 
     return (
       <div className="App">
-        
-        
-        <h1 className="tableText" onClick={()=> this.props.history.push("/")}>Pantry Hero</h1>
+
+
+        <h1 className="tableText" onClick={() => this.props.history.push("/")}>Pantry Hero</h1>
         <NavigBar handleSearchBar={this.handleSearchBar} logout={this.logout} username={this.state.currentUser.username} />
         <div className="mainBody">
           <Switch>
             <Route exact path="/" component={Title} />
-            <Route path="/login" render={() => <LoginForm setUser={this.setUser} history={this.props.history}/>} />
-            <Route path="/signup" render={() => <SignUpForm setUser={this.setUser} history={this.props.history}/>} />
-            <Route path="/pantry" render={() => <Pantry handleSearchBar={this.handleSearchBar} currentIng={this.state.currentIng} user_id={this.state.currentUser.id} pantry={this.state.pantry} handleDelete={this.handleDelete}/>} />
+            <Route path="/login" render={() => <LoginForm setUser={this.setUser} history={this.props.history} />} />
+            <Route path="/signup" render={() => <SignUpForm setUser={this.setUser} history={this.props.history} />} />
+            <Route path="/pantry" render={() => <Pantry handleSearchBar={this.handleSearchBar} currentIng={this.state.currentIng} user_id={this.state.currentUser.id} pantry={this.state.pantry} handleDelete={this.handleDelete} />} />
             <Route path="/home" component={Home} />
             <Route path="/favrecipes" render={() => <FavRecipes />} />
-            <Route path="/filteredrecipes" render={() => <FilteredRecipes />} />
+            <Route path="/filteredrecipes" render={() => <FilteredRecipes pantry={this.state.pantry} filteredRecipes={this.state.filteredRecipes}/>} />
           </Switch>
         </div>
 
