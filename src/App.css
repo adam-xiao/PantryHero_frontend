@@ -36,3 +36,61 @@
     transform: rotate(360deg);
   }
 }
+
+#title {
+  background-image: url("./img/pantry.jpg");
+  position: absolute; top: 0; left: 0; height: 100%; width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.titleText {
+  color: azure;
+  font-size: 140px;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+.center-form {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  padding: 5vw;
+  background-color: rgba(51,121,204);
+  border-radius: 5px;
+  text-align: left;
+  color: white;
+}
+
+.auth-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-form > * {
+  width: 100%;
+  margin: 3px;  
+}
+
+.auth-form > input {
+  width: 85%;
+  height: 20px;
+  margin: 5px;
+  border-radius: 5px;
+  border-width: 0.5px;
+  border-color: rgba(200,200,200, 0.2);
+  background-color: rgba(246,246,246);
+
+  padding-left: 20px;
+}
+
+.mainBody {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
