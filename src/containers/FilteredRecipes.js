@@ -23,13 +23,6 @@ export default class FilteredRecipes extends Component{
                         <Row>
                             <Col sm={8}>
                             <Table striped bordered hover>
-                                {/* {this.state.filteredRecipes ? 
-                                     <tr>
-                                        <th>Recipe</th>
-                                        <th>Used Ingredients</th>
-                                        <th>Missing Ingredients</th>
-                                    </tr> 
-                                    : null} */}
                                 <tbody>
                                     {this.props.filteredRecipes && this.props.filteredRecipes.map(recipe => <RecipeCard recipe={recipe}/>)} 
                                 </tbody>

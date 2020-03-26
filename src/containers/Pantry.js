@@ -42,14 +42,14 @@ class Pantry extends Component {
                         <br></br>
                         <Container fluid>
                             <Row>
-                                <Col sm={8}>
+                                <Col>
                                     <Table striped bordered hover>
                                         <tbody>
                                             {this.props.pantry && this.props.pantry.map(item => <FoodCard food={item}  key={item.id} handleDelete={this.props.handleDelete}/>)}
                                         </tbody>
                                     </Table>
                                 </Col>
-                                <Col sm={4}>
+                                <Col>
                                     {this.props.currentIng && <SearchCard food={this.props.currentIng} user_id={this.props.user_id}/>}
                                 </Col>
                             </Row>

@@ -54,7 +54,6 @@ function SearchCard(props) {
             Qty: <input type="number" style={{width:"50px"}} data-id={id} min="1" required="required" value={qty} onChange={(e)=>setQty(e.target.value)}></input>
             <button>Add to Pantry</button>
           </form>
-
         </Jumbotron>
     )
 }

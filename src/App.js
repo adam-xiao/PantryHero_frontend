@@ -142,7 +142,7 @@ class App extends Component {
             <Route path="/login" render={() => <LoginForm setUser={this.setUser} history={this.props.history} />} />
             <Route path="/signup" render={() => <SignUpForm setUser={this.setUser} history={this.props.history} />} />
             <Route path="/pantry" render={() => <Pantry handleSearchBar={this.handleSearchBar} currentIng={this.state.currentIng} user_id={this.state.currentUser.id} pantry={this.state.pantry} handleDelete={this.handleDelete} />} />
-            <Route path="/home" component={Home} />
+            <Route path="/home" render={() => <Home filteredRecipes={this.state.filteredRecipes} pantry={this.state.pantry}/>} />
             <Route path="/favrecipes" render={() => <FavRecipes />} />
             <Route path="/filteredrecipes" render={() => <FilteredRecipes pantry={this.state.pantry} filteredRecipes={this.state.filteredRecipes}/>} />
           </Switch>
