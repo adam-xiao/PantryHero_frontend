@@ -5,6 +5,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background-size:cover;
+  background-position: center;
 }
 
 .titleText {
@@ -49,9 +51,56 @@
   padding-left: 20px;
 }
 
+.stats {
+  color: azure;
+  font-size: 30px;
+  position: relative;
+  right: 700px;
+  bottom: 100px;
+}
+
+.header {
+  color: azure;
+  font-size: 70px;
+position: relative;
+left: 150px;
+}
+
+.numbers {
+  position: relative;
+left: 150px;
+}
+
+.homeImage {
+  background-image: url("https://images.unsplash.com/photo-1523294587484-bae6cc870010?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2664&q=80");
+  height: 1000px;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-top: 70px;
+} 
+
+.welcome {
+  color: azure;
+  font-size: 150px;
+  padding-bottom: 100px;
+  
+}
+
 .mainBody {
+
   display: flex;
   justify-content: center;
   align-items: center;
+}
 
+.instructions {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
 }

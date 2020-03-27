@@ -6,35 +6,41 @@ import Table from 'react-bootstrap/Table'
 import RecipeCard from '../components/RecipeCard'
 
 
-export default class FilteredRecipes extends Component{
-       
+export default class FilteredRecipes extends Component {
 
-    render(){ 
-        
-        return(
-            
+
+    render() {
+
+        return (
+
             <div>
-            <h1>Recipes You Can Make!</h1>
+                <h1>Recipes You Can Make!</h1>
 
-            {localStorage.token ?
+                {localStorage.token ?
 
-                <div>
-                    <Container fluid>
-                        <Row>
-                            <Col sm={8}>
-                            <Table striped bordered hover>
-                                <tbody>
-                                    {this.props.filteredRecipes && this.props.filteredRecipes.map(recipe => <RecipeCard recipe={recipe}/>)} 
-                                </tbody>
-                            </Table>
-                            </Col>
-                        </Row>
-                    </Container>
-                    
-                </div>
+                    <div>
+                        <Container fluid>
+                            <Row>
+                                <Col sm={8}>
+                                    <Table striped bordered hover>
+                                        <tr>
+                                            <th>Recipe</th>
+                                            <th>Description</th>
+                                            <th>Video</th>
+                                            <th>Instructions</th>
+                                        </tr>
 
-                : <div>please sign in </div>}
-        </div>
+                                            {this.props.filteredRecipes && this.props.filteredRecipes.map(recipe => <RecipeCard recipe={recipe} />)}
+
+                                    </Table>
+                                </Col>
+                            </Row>
+                        </Container>
+
+                    </div>
+
+                    : <div>please sign in </div>}
+            </div>
 
         )
     }

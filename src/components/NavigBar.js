@@ -46,7 +46,7 @@ export default class NavigBar extends React.Component{
                         <Nav.Link href="/home">Home</Nav.Link>
                         <Nav.Link href="/pantry">Pantry</Nav.Link>
                         <DropdownButton id="dropdown-basic-button" title="Recipes" variant="light">
-                            <Dropdown.Item href="/favrecipes">Favorite Recipes</Dropdown.Item>
+                            {/* <Dropdown.Item href="/favrecipes">Favorite Recipes</Dropdown.Item> */}
                             <Dropdown.Item href="/filteredrecipes">Recipe Finder</Dropdown.Item>
                         </DropdownButton>
                         

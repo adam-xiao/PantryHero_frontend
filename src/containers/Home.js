@@ -12,61 +12,48 @@ import '../App.css';
 
 
 
-class Home extends Component{
+class Home extends Component {
 
-    
 
-    render(){
 
-        const { id,
-            nf_card,
-              food_name,
-              nf_calories,
-              nf_cholesterol,
-              nf_dietary_fiber,
-              nf_p,
-              quantity,
-              nf_potassium,
-              nf_protein,
-              nf_saturated_fat,
-              nf_sodium,
-              nf_sugars,
-              nf_total_carbohydrate,
-              nf_total_fat,
-              img_url,} = this.props.pantry
+    render() {
 
-              let calories = this.props.pantry.map(item => item.nf_calories)
-              let carbs = this.props.pantry.map(item => item.nf_total_carbohydrate)
-              let protein = this.props.pantry.map(item => item.nf_protein)
-              let totalFat = this.props.pantry.map(item => item.nf_total_fat)
+        let calories = this.props.pantry.map(item => item.nf_calories * item.quantity)
+        let carbs = this.props.pantry.map(item => item.nf_total_carbohydrate * item.quantity)
+        let protein = this.props.pantry.map(item => item.nf_protein * item.quantity)
+        let totalFat = this.props.pantry.map(item => item.nf_total_fat * item.quantity)
 
-        return(
-           
-            <Container fluid className="homeImage">
-               
-                
-                <div>
-                    <Row>
-                        <Col>Cumulative Pantry Stats</Col>
+        return (
+
+            <Container fluid className="homeContainer">
+                <Jumbotron className="homeImage">
+                <div className="stats">
+                <Row>
+                        <Col className="welcome">Welcome back</Col>
                     </Row>
                     <Row>
-                        <Col>Total Calories: {calories.reduce( (acc, init) => acc + init, 0)}</Col>
-                        <Col>Total Carbs: {carbs.reduce( (acc, init) => acc + init, 0)}</Col>
+                        <Col className="header">Cumulative Pantry Stats:</Col>
+                    </Row>
+                    <br></br>
+                    <div className="numbers">
+                    <Row>
+                        <Col>Total Calories: {calories.reduce((acc, init) => acc + init, 0)}</Col>
+                        <Col>Total Carbs: {carbs.reduce((acc, init) => acc + init, 0)}g</Col>
                     </Row>
                     <Row>
-                        <Col>Total Protein: {protein.reduce( (acc, init) => acc + init, 0)}</Col>
-                        <Col>Total Fat: {totalFat.reduce( (acc, init) => acc + init, 0)}</Col>
+                        <Col>Total Protein: {protein.reduce((acc, init) => acc + init, 0)}g</Col>
+                        <Col>Total Fat: {totalFat.reduce((acc, init) => acc + init, 0)}g</Col>
                     </Row>
+                    </div>
                 </div>
 
+                </Jumbotron>
+
                 <Row>
-                    <Jumbotron >
-                        <img src="https://images.unsplash.com/photo-1545601445-4d6a0a0565f0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80"/>
-                    </Jumbotron>            
                 </Row>
 
-              
-            </Container>      
+
+            </Container>
         )
     }
 }
