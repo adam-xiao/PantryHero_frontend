@@ -80,7 +80,7 @@ class App extends Component {
       currentUser: response.user
     }, () => {
       localStorage.token = response.token
-      this.props.history.push("/pantry")
+      this.props.history.push("/home")
     })
 
   }
